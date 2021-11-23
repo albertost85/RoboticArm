@@ -85,7 +85,7 @@ def main():
     policy_mode = 'MlpPolicy'    
     env = gym.make('reach_target-state-v0', render_mode=None, observation_mode='state')
     env = myEnv(env, mode='mode2')
-    env = disabledRobot(env, 2)
+    env = disabledRobot(env, 4)
     answers = prompt(questions, style=mystyle)
     my_name = answers.get("custom_name")
     route_to_save  = os.path.join(mypath, answers.get("custom_name")) 
