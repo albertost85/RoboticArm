@@ -87,6 +87,24 @@ class myEnv(gym.Wrapper):
             print("Error on step")
         return obs, reward, done, info
 
+class disabledRobot(gym.Wrapper):
+    _disability: int
+    def __init__(self, env=None, disability=0):
+        super(disabledRobot, self).__init__(env)
+        if disability >127:
+            disability = 0
+            print(f"Disability over {disability}, enter a 7 bits binary number")
+        if disability > 0:
+            print(f"Robot disabled {disability} joints")
+        self._disability = disability
+    def step(self, action):
+        for i, act in enumerate(action):
+            if 2**i & self._disability > 0:
+                action[i] = 0.0
+        #print(f"DEBUG: robot new actions {action}")
+        obs, reward, done, info = self.env.step(action)
+        return obs, reward, done, info
+
 
 def averaverqueyolovea(env, model, max_steps=1000):
     episode_rewards = [0.0]

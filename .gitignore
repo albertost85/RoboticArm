@@ -1,3 +1,6 @@
 SAC_models/
 old/
 SAC_eval_logs/
+gitupdate.sh
+myLib/__pycache__
+tb_*
