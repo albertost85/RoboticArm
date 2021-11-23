@@ -5,3 +5,4 @@ gitupdate.sh
 myLib/__pycache__
 tb_*
 images/
+runs/

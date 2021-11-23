@@ -138,8 +138,8 @@ def cute_figure(fig_x, fig_y, name="default_name", file_name = None, labels=None
       result = plt.savefig(f"{PATHIMAGES}/{file_name}_{data_name}.tiff", dpi=300, facecolor='w', edgecolor='w',
               orientation='portrait', format='tiff',
               transparent=False, bbox_inches=None, pad_inches=0.1)
-      result = plt.savefig(f"{PATHIMAGES}/{file_name}_{data_name}.eps", facecolor='w', edgecolor='w',
-                  orientation='portrait', format='eps',
+      result = plt.savefig(f"{PATHIMAGES}/{file_name}_{data_name}.pdf", facecolor='w', edgecolor='w',
+                  orientation='portrait', format='pdf',
                   transparent=False, bbox_inches=None, pad_inches=0.1)
     #plt.show()
     return figure
@@ -329,8 +329,8 @@ if args.get('imageset') == 0 or args.get('imageset') == 11:
     #reach_target_SAC_MlpPolicy[net=64e3]_mode3_seed=0_0
     path_mode2 = './tb_backup/reach_target_SAC_MlpPolicy[net=64e3]_mode2_seed=0_0'
     path_mode3 = './tb_backup/reach_target_SAC_MlpPolicy[net=64e3]_mode3_seed=0_0' #tarda mucho, hay demasiados logs
-    my_dataset_mode2 = get_section_results(path_mode2)
-    my_dataset_mode3 = get_section_results(path_mode3)
+    my_dataset_mode2 = get_section_results(path_mode2, limit=2e6)
+    my_dataset_mode3 = get_section_results(path_mode3, limit=2e6)
     my_name = path_mode2.split("/")[-1][:- 15].replace('=','').replace('[','').replace(']','').replace('-','')
     cute_figure([my_dataset_mode2["tr_len"]["x"],
                  my_dataset_mode3["tr_len"]["x"]],
