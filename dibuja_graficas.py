@@ -133,7 +133,7 @@ def cute_figure(fig_x, fig_y, name="default_name", file_name = None, labels=None
     
     if not os.path.exists(PATHIMAGES):
         os.makedirs(PATHIMAGES)
-
+    plt.tight_layout()
     if file_name != None:
       result = plt.savefig(f"{PATHIMAGES}/{file_name}_{data_name}.tiff", dpi=300, facecolor='w', edgecolor='w',
               orientation='portrait', format='tiff',
