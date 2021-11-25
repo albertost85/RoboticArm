@@ -469,3 +469,27 @@ if args.get('imageset') == 0 or args.get('imageset') == 20:
                 labels = ['longitud_media','recompensa_media'], 
                 data_name = '')
     print(f"Name: {my_name}, check {PATHIMAGES} for printed images")
+
+if args.get('imageset') == 0 or args.get('imageset') == 21:
+    #reach_target_SAC_MlpPolicypi64e4qf128e3
+    path_mode2 = './tb_backup/jaco_SAC_MlpPolicy[pi=64e4-qf=128e3]_mode2_seed=0_0'
+    path_mode3 = './tb_backup/jaco_experienced_from_panda_[pi64e4_qf128e3]_mode2_0'
+    my_dataset_mode2 = get_section_results(path_mode2)
+    my_dataset_mode3 = get_section_results(path_mode3, limit=2e6)
+    my_name = 'Entrenamiento novato robot Jaco'
+    cute_figure([my_dataset_mode2["tr_len"]["x"],
+                 my_dataset_mode2["tr_rew"]["x"]],
+                [my_dataset_mode2["tr_len"]["y"],
+                 my_dataset_mode2["tr_rew"]["y"]],
+                name=my_name, 
+                labels = ['longitud_media','recompensa_media'], 
+                data_name = '')
+    my_name = 'Entrenamiento experto Panda a Jaco'
+    cute_figure([my_dataset_mode3["tr_len"]["x"],
+                 my_dataset_mode3["tr_rew"]["x"]],
+                [my_dataset_mode3["tr_len"]["y"],
+                 my_dataset_mode3["tr_rew"]["y"]],
+                name=my_name, 
+                labels = ['longitud_media','recompensa_media'], 
+                data_name = '')
+    print(f"Name: {my_name}, check {PATHIMAGES} for printed images")
